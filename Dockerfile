@@ -9,6 +9,7 @@ WORKDIR /app
 
 # Install dependencies
 RUN pip3 install -r /app/requirements.txt
+ENV PYTHONPATH /app:$PYTHONPATH
 CMD [ "uvicorn", "main:app", "--reload", "--host=0.0.0.0", "--port=80"]
 
 EXPOSE 80

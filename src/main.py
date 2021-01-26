@@ -1,7 +1,7 @@
 """Main file of the CTC App"""
 from fastapi import FastAPI, Response
 
-from routers import ROUTERS
+from .routers import ROUTERS
 
 # Initialize app
 app = FastAPI()
