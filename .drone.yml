@@ -1,0 +1,16 @@
+kind: pipeline
+name: Container Test Application
+
+steps:
+- name: Static Analysis
+  image: python:3.8-slim
+  commands:
+  - pip3 install -r reqs/analysis
+  - python3 -m isort src
+  - python3 -m black src --line-length=79
+  - python3 -m flake8 src --verbose
+
+- name: Testing
+  image: python:3.8-slim
+  commands:
+  - 

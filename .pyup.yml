@@ -1,0 +1,26 @@
+
+update: all
+pin: True
+branch: main
+schedule: "every week"
+search: false
+requirements:
+  - reqs/analysis.txt:
+      update: all
+      pin: True
+  - reqs/app.txt:
+      update: all
+      pin: True
+  - reqs/security.txt:
+      update: all
+      pin: True
+  - reqs/testing.txt:
+      update: all
+      pin: True
+
+label_prs: Dependency Updates
+assignees:
+ - alexpdr
+
+branch_prefix: pyup/
+close_prs: True
