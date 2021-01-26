@@ -16,7 +16,7 @@ steps:
   - pip3 install -r reqs/testing.txt
   - pytest src/tests/
 
-- name: Build  
+- name: Build & Deploy
   image: plugins/docker
   settings:
     repo: alexpdr/ctc
@@ -25,3 +25,9 @@ steps:
       from_secret: docker_username
     password:
       from_secret: docker_password
+  when:
+    branch:
+    - master
+    - develop
+    event:
+    - push
