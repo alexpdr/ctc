@@ -3,7 +3,7 @@ name: Container Test Application
 
 steps:
 - name: Static Analysis
-  image: python-slim-buster:3.8
+  image: python-slim-buster:latest
   commands:
   - pip3 install -r reqs/analysis
   - python3 -m isort ctc
