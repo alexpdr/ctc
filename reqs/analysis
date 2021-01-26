@@ -4,4 +4,3 @@ isort==5.7.0
 
 # Verification
 flake8==3.8.4
-pylint==2.6.0

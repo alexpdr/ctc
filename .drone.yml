@@ -9,5 +9,4 @@ steps:
   - python3 -m isort ctc
   - python3 -m black ctc --line-length=79
   - python3 -m flake8 ctc --verbose
-  - python3 -m pylint ctc
 
