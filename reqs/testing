@@ -1,0 +1,8 @@
+# Unit testing
+pytest==6.2.2
+
+# Endpoint testing
+webtest-asgi==1.0.1
+
+# Coverage
+pytest-cov==2.11.1
