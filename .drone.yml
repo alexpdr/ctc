@@ -15,3 +15,13 @@ steps:
   commands:
   - pip3 install -r reqs/testing.txt
   - pytest src/tests/
+
+- name: Build  
+  image: plugins/docker
+  settings:
+    repo: alexpdr/ctc
+    dockerfile: Dockerfile
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
