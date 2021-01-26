@@ -4,6 +4,7 @@ name: Container Test Application
 steps:
 - name: Static Analysis
   image: python:latest
+  commands:
   - pip3 install -r reqs/analysis
   - python3 -m isort ctc
   - python3 -m black ctc --line-length=79
