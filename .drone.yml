@@ -16,7 +16,7 @@ steps:
   - pip3 install -r reqs/testing.txt
   - pytest src/tests/
 
-- name: Build & Deploy
+- name: Build & Push image to DockerHub
   image: plugins/docker
   settings:
     repo: alexpdr/ctc
