@@ -1,8 +1,9 @@
 """Contains tests for main"""
 from unittest import TestCase
 
-from app.main import app
+from src.main import app
 from webtest_asgi import TestApp
+TestApp.__test__ = False
 
 
 class TestMain(TestCase):
