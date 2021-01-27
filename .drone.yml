@@ -14,7 +14,7 @@ steps:
   image: python:3.8-slim
   commands:
   - pip3 install -r reqs/testing.txt
-  - pytest src/tests/
+  - cd src && python3 -m pytest tests/
 
 - name: Build & Push
   image: plugins/docker
