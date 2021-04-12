@@ -1,5 +1,5 @@
 # Unit testing
-pytest==6.2.2
+pytest==6.2.3
 
 # Endpoint testing
 webtest-asgi==1.0.1
