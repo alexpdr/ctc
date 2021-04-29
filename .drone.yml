@@ -47,8 +47,3 @@ steps:
   environment:
     SSH_PATH:
       from_secret: ssh_path
-  when:
-    branch:
-    - feature/ci-tweaks2
-    event:
-    - push
