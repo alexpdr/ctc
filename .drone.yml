@@ -31,19 +31,25 @@ steps:
     event:
     - push
 
+---
+
+kind: pipeline
+type: ssh
+name: Deployment
+
+server:
+  host: 
+    from_secret: ssh_hostname
+  user:
+    from_secret: ssh_user
+  ssh_key:
+    from_secret: ssh_key
+
+steps:
 - name: Pull Image & restart
-  image: appleboy/drone-ssh
-  settings:
-    host: 
-      from_secret: ssh_hostname
-    user:
-      from_secret: ssh_user
-    password:
-      from_secret: ssh_key
-    port: 22
-    script:
-    - docker pull alexpdr/ctc:latest
-    - docker-compose -f $SSH_PATH pull && docker-compose -f $SSH_PATH up
+  commands:
+  - docker pull alexpdr/ctc:latest
+  - docker-compose -f $SSH_PATH pull && docker-compose -f $SSH_PATH up
   environment:
     SSH_PATH:
       from_secret: ssh_path
@@ -53,4 +59,4 @@ steps:
     event:
     - push
   depends_on:
-    - Build & Push
+    - Development
