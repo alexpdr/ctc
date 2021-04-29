@@ -44,15 +44,6 @@ platform:
 
 steps:
 - name: Deploy
-  image: appleboy/drone-ssh
-  settings:
-    host:
-      from_secret: ssh_hostname
-    port: 22
-    username:
-      from_secret: ssh_user
-    key:
-      from_secret: ssh_key
   commands:
   - docker pull alexpdr/ctc:latest
   - docker-compose -f $SSH_PATH pull && docker-compose -f $SSH_PATH up
