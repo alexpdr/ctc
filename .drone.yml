@@ -49,6 +49,7 @@ environment:
 steps:
 - name: Deploy
   commands:
-    - echo "test" > ~/test_output.txt
+    - whoami
+    - pwd
   # - docker pull alexpdr/ctc:latest
   # - docker-compose -f $DC_PATH pull && docker-compose -f $DC_PATH up
