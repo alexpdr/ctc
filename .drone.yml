@@ -41,13 +41,4 @@ steps:
     key:
       from_secret: ssh_key
   commands:
-  - docker pull alexpdr/ctc:latest
-  - docker-compose -f $SSH_PATH pull && docker-compose -f $SSH_PATH up
-  environment:
-    SSH_PATH:
-      from_secret: ssh_path
-  when:
-    branch:
-    - feature/ci-tweaks2
-    event:
-    - push
+  - echo hello world
