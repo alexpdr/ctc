@@ -1,5 +1,5 @@
 kind: pipeline
-name: Container Test Application
+name: Development
 
 steps:
 - name: Static Analysis
@@ -34,7 +34,7 @@ steps:
 ---
 kind: pipeline
 type: ssh
-name: Deploy test container to hs
+name: Deployment
 
 server:
   host: 
@@ -57,3 +57,5 @@ steps:
     - feature/ci-tweaks2
     event:
     - push
+  depends_on:
+    - Development
