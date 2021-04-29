@@ -50,6 +50,6 @@ steps:
   - docker pull alexpdr/ctc:latest
   - cd $DC_PATH && docker-compose pull && docker-compose up
   environment:
-    DC_PATH:
+    DC_PATH: $dc_path
       from_secret: dc_path
     DC_PATH_2: aaaaa
