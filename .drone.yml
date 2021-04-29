@@ -42,11 +42,12 @@ platform:
   os: linux
   arch: amd64
 
+environment:
+  DC_PATH:
+    from_secret: dc_path
+
 steps:
 - name: Deploy
   commands:
   - docker pull alexpdr/ctc:latest
   - docker-compose -f $SSH_PATH pull && docker-compose -f $SSH_PATH up
-  environment:
-    SSH_PATH:
-      from_secret: ssh_path
