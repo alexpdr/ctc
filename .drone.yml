@@ -49,7 +49,6 @@ environment:
 steps:
 - name: Deploy
   commands:
-    - whoami
-    - pwd
-  # - docker pull alexpdr/ctc:latest
-  # - docker-compose -f $DC_PATH pull && docker-compose -f $DC_PATH up
+  - echo $DC_PATH
+  - docker pull alexpdr/ctc:latest
+  - docker-compose -f $DC_PATH pull && docker-compose -f $DC_PATH up
