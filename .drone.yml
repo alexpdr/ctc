@@ -30,3 +30,30 @@ steps:
     - main
     event:
     - push
+
+---
+kind: pipeline
+type: ssh
+name: default
+
+server:
+  host: 
+    from_secret: ssh_hostname
+  user:
+    from_secret: ssh_key
+  password:
+    from_secret: ssh_password
+
+steps:
+- name: Pull Image & restart
+  commands:
+  - docker pull alexpdr/ctc:latest
+  - docker-compose -f $SSH_PATH pull
+  environment:
+    SSH_PATH:
+      from_secret: ssh_path
+  when:
+    branch:
+    - feature/ci-tweaks2
+    event:
+    - push
