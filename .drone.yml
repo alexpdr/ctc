@@ -34,15 +34,15 @@ steps:
 ---
 kind: pipeline
 type: ssh
-name: default
+name: Deploy test container to hs
 
 server:
   host: 
     from_secret: ssh_hostname
   user:
-    from_secret: ssh_key
+    from_secret: ssh_user
   password:
-    from_secret: ssh_password
+    from_secret: ssh_key
 
 steps:
 - name: Pull Image & restart
