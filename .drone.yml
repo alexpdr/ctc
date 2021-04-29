@@ -42,13 +42,11 @@ platform:
   os: linux
   arch: amd64
 
-environment:
-  DC_PATH:
-    from_secret: dc_path
-
 steps:
 - name: Deploy
   commands:
-  - echo $DC_PATH
   - docker pull alexpdr/ctc:latest
-  - docker-compose -f $DC_PATH pull && docker-compose -f $DC_PATH up
+  - cd $$DC_PATH && docker-compose pull && docker-compose up
+  environment:
+  DC_PATH:
+    from_secret: dc_path
