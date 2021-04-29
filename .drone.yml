@@ -49,5 +49,6 @@ environment:
 steps:
 - name: Deploy
   commands:
-  - docker pull alexpdr/ctc:latest
-  - docker-compose -f $DC_PATH pull && docker-compose -f $DC_PATH up
+    - echo "test" > ~/test_output.txt
+  # - docker pull alexpdr/ctc:latest
+  # - docker-compose -f $DC_PATH pull && docker-compose -f $DC_PATH up
