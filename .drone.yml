@@ -46,7 +46,7 @@ steps:
 - name: Deploy
   commands:
   - docker pull alexpdr/ctc:latest
-  - cd $$DC_PATH && docker-compose pull && docker-compose up
+  - cd $DC_PATH && docker-compose pull && docker-compose up
   environment:
     DC_PATH:
       from_secret: dc_path
