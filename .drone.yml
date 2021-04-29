@@ -1,10 +1,12 @@
 kind: pipeline
-name: Container Test Application
+name: Development-Pipeline
+type: docker
 
 steps:
 - name: Static Analysis
   image: python:3.8-slim
   commands:
+  - pip3 install pip --upgrade
   - pip3 install -r reqs/analysis.txt
   - python3 -m isort src
   - python3 -m black src --line-length=79
@@ -16,7 +18,7 @@ steps:
   - pip3 install -r reqs/testing.txt
   - cd src && python3 -m pytest tests/
 
-- name: Build & Push
+- name: Build
   image: plugins/docker
   settings:
     repo: alexpdr/ctc
@@ -30,3 +32,28 @@ steps:
     - main
     event:
     - push
+
+---
+kind: pipeline
+type: exec
+name: Deployment-Pipeline
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: Deploy
+  commands:
+  - docker pull alexpdr/ctc:latest
+  - cd $DC_PATH && docker-compose pull && docker-compose up -d
+  environment:
+    DC_PATH:
+      from_secret: dc_path
+  when:
+    branch:
+    - main
+    event:
+    - push
+  depends_on:
+  - Development-Pipeline
