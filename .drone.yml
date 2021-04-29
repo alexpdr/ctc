@@ -50,4 +50,4 @@ steps:
 - name: Deploy
   commands:
   - docker pull alexpdr/ctc:latest
-  - docker-compose -f $SSH_PATH pull && docker-compose -f $SSH_PATH up
+  - docker-compose -f $DC_PATH pull && docker-compose -f $DC_PATH up
