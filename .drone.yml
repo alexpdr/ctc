@@ -16,7 +16,7 @@ steps:
   - pip3 install -r reqs/testing.txt
   - cd src && python3 -m pytest tests/
 
-- name: Build & Push
+- name: Build
   image: plugins/docker
   settings:
     repo: alexpdr/ctc
@@ -31,14 +31,24 @@ steps:
     event:
     - push
 
-- name: Pull Image & Restart Container
+- name: Deploy
   image: appleboy/drone-ssh
   settings:
-    host: foo.com
+    host:
+      from_secret: ssh_hostname
     port: 22
     username:
       from_secret: ssh_user
     key:
       from_secret: ssh_key
   commands:
-  - echo hello world
+  - docker pull alexpdr/ctc:latest
+  - docker-compose -f $SSH_PATH pull && docker-compose -f $SSH_PATH up
+  environment:
+    SSH_PATH:
+      from_secret: ssh_path
+  when:
+    branch:
+    - feature/ci-tweaks2
+    event:
+    - push
