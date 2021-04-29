@@ -51,5 +51,5 @@ steps:
   - cd $DC_PATH && docker-compose pull && docker-compose up
   environment:
     DC_PATH:
-      from_secret: ${DC_PATH}
+      from_secret: DC_PATH
     DC_PATH_2: aaaaa
