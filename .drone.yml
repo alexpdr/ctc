@@ -47,8 +47,8 @@ steps:
   commands:
   - echo $DC_PATH
   - echo $DC_PATH_2
-  # - docker pull alexpdr/ctc:latest
-  # - cd $${DC_PATH} && docker-compose pull && docker-compose up
+  - docker pull alexpdr/ctc:latest
+  - cd $DC_PATH && docker-compose pull && docker-compose up
   environment:
     DC_PATH:
       from_secret: dc_path
