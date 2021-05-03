@@ -1,5 +1,5 @@
 # Correction
-black==21.4b0
+black==21.4b2
 isort==5.8.0
 
 # Verification
